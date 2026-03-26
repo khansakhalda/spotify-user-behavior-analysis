@@ -2,67 +2,27 @@
 
 ## 📌 Background
 
-The rapid growth of music streaming platforms such as Spotify has generated large amounts of user interaction data. Understanding user listening behavior is crucial for improving recommendation systems, enhancing user experience, and supporting data-driven decision making.
+The growth of music streaming platforms like Spotify generates large amounts of user data. However, user listening behavior is complex and difficult to interpret without proper analysis.
 
-However, user behavior is often complex and varies significantly between individuals. Without proper analysis, it is difficult to identify meaningful patterns in how users consume music.
-
-This project aims to analyze Spotify user behavior using machine learning techniques to uncover hidden patterns, segment users, and explore relationships between music genres.
+This project aims to analyze Spotify user behavior to identify patterns, segment users, and uncover relationships between music genres using machine learning techniques.
 
 ---
 
 ## 🎯 Objectives
 
-* Analyze Spotify user listening behavior
-* Identify patterns in music consumption
-* Segment users into distinct groups using clustering
-* Discover relationships between music genres using association rule mining
-* Provide insights to support recommendation systems
+* Analyze user listening behavior
+* Identify music consumption patterns
+* Segment users using clustering
+* Discover genre relationships using association rules
 
 ---
 
 ## ⚙️ Methodology
 
-### 1. Data Preprocessing
-
-* Loaded dataset from CSV file
-* Checked for missing values and duplicates (none found)
-* Selected key numerical features:
-
-  * Daily listening time
-  * Average session duration
-  * Daily access frequency
-  * Number of songs played
-* Standardized data using **StandardScaler**
-
----
-
-### 2. Dimensionality Reduction (PCA)
-
-* Applied **Principal Component Analysis (PCA)**
-* Reduced 4 features into 2 components (PC1 & PC2)
-* Explained variance:
-
-  * PC1: 26%
-  * PC2: 25%
-  * Total: 51%
-
-👉 PCA helps simplify data structure and enables visualization of user distribution.
-
----
-
-### 3. Clustering (K-Means)
-
-* Used **Elbow Method** and **Silhouette Score**
-* Optimal number of clusters: **K = 3**
-* Users were grouped based on behavioral similarity
-
----
-
-### 4. Association Rule Mining
-
-* Applied **Apriori algorithm** using Mlxtend
-* Generated **371 association rules**
-* Analyzed relationships between music genres within each cluster
+* **Preprocessing**: Data cleaning, feature selection, and standardization
+* **PCA**: Reduced 4 features into 2 components (51% variance explained)
+* **Clustering**: K-Means with optimal K = 3
+* **Association Rules**: Apriori algorithm (371 rules discovered)
 
 ---
 
@@ -70,92 +30,62 @@ This project aims to analyze Spotify user behavior using machine learning techni
 
 ### 🔹 User Segmentation
 
-#### 🟢 Cluster 0 – Efficient Listeners
+* **Cluster 0 – Efficient listeners**
+  High number of songs with short listening time
 
-* Low listening time (~0.66 hours/day)
-* Short sessions (~0.27 hours)
-* Low access frequency (~1.11 times/day)
-* Highest number of songs (~29 songs/day)
+* **Cluster 1 – Consistent listeners**
+  Longer sessions with frequent access
 
-👉 Insight:
-Users consume many songs in a short time, indicating efficient and fast listening behavior.
-
----
-
-#### 🟠 Cluster 1 – Consistent Listeners
-
-* Low listening time (~0.65 hours/day)
-* Longest sessions (~0.45 hours)
-* Highest access frequency (~2 times/day)
-* Lowest number of songs (~11 songs/day)
-
-👉 Insight:
-Users prefer longer, focused listening sessions and consistent usage patterns.
+* **Cluster 2 – Exploratory listeners**
+  Highest listening time with diverse behavior
 
 ---
 
-#### 🟣 Cluster 2 – Exploratory Listeners
+### 🔹 Genre Patterns
 
-* Highest listening time (~2.19 hours/day)
-* Short sessions (~0.18 hours)
-* Moderate access frequency
-* Moderate number of songs
-
-👉 Insight:
-Heavy users who explore various genres with dynamic listening behavior.
-
----
-
-### 🔹 Genre Association Patterns
-
-* Total rules discovered: **371 rules**
-
-**Cluster 0**
-
-* Strong, stable genre relationships
-* Example: *blues, reggae → indie*
-
-👉 Users have predictable music preferences
-
----
-
-**Cluster 1**
-
-* Strong genre pair relationships
-* Example: *jazz → hip hop*
-
-👉 Users prefer consistent genre combinations
-
----
-
-**Cluster 2**
-
-* Most complex and diverse rules (193 rules)
-* Many high-confidence relationships
-
-👉 Users explore diverse and non-mainstream genre combinations
+* Cluster 0 → Stable genre preferences
+* Cluster 1 → Strong genre pair relationships
+* Cluster 2 → Most diverse and complex genre combinations
 
 ---
 
 ### 🔹 Key Insight
 
-This project reveals that Spotify users can be categorized into three behavioral types:
+This analysis is based on **301 Spotify users**, with no missing values or duplicate data, ensuring reliable results.
 
-* Efficient listeners (short & high-volume consumption)
-* Consistent listeners (long & focused sessions)
-* Exploratory listeners (diverse & intensive usage)
+The results reveal three distinct user behavior segments:
 
-Additionally, genre associations provide valuable insights for building more personalized and intelligent recommendation systems.
+* **🟢 Cluster 0 – Efficient listeners (116 users)**
+  These users play the highest number of songs (~29 songs/day) despite having low listening time (~0.66 hours/day) and short sessions.
+  👉 This indicates fast, efficient listening behavior, likely skipping tracks or preferring shorter songs.
+
+---
+
+* **🟠 Cluster 1 – Consistent listeners (109 users)**
+  These users access Spotify most frequently (~2 times/day) and have the longest session duration (~0.45 hours), but listen to fewer songs (~11 songs/day).
+  👉 This suggests focused and immersive listening habits.
+
+---
+
+* **🟣 Cluster 2 – Exploratory listeners (76 users)**
+  These users have the highest listening time (~2.19 hours/day) with shorter sessions and moderate song counts.
+  👉 This reflects dynamic behavior with strong exploration across different music genres.
+
+---
+
+In addition, **371 association rules** were discovered across clusters, revealing strong relationships between genres:
+
+* Cluster 0 shows stable and predictable genre transitions
+* Cluster 1 highlights consistent genre pairings
+* Cluster 2 exhibits the most complex and diverse genre combinations
+
+👉 These findings demonstrate the potential to build **behavior-aware and personalized recommendation systems**, tailored not only to user preferences but also to their listening patterns.
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-* Python
-* Pandas, NumPy
-* Matplotlib, Seaborn
-* Scikit-learn
-* Mlxtend
+Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Mlxtend
 
 ---
 
